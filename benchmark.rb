@@ -14,6 +14,8 @@ File.open(ARGV[0]) do |file|
 end
 jps.setup_route
 
+n = ARGV[1].to_i
+
 heuristic_flag = true
 jps_flag       = true
 
@@ -22,7 +24,7 @@ Benchmark.bm 10 do |r|
   heuristic_flag = false
   jps_flag       = false
   r.report "Dijkstra" do
-    100.times do
+    n.times do
       jps.reset("N481", "N502", use_heuristic: heuristic_flag, use_jps: jps_flag)
       jps.search
     end
@@ -31,7 +33,7 @@ Benchmark.bm 10 do |r|
   heuristic_flag = true
   jps_flag       = false
   r.report "A*" do
-    100.times do
+    n.times do
       jps.reset("N481", "N502", use_heuristic: heuristic_flag, use_jps: jps_flag)
       jps.search
     end
@@ -40,7 +42,7 @@ Benchmark.bm 10 do |r|
   heuristic_flag = true
   jps_flag       = true
   r.report "JPS" do
-    100.times do
+    n.times do
       jps.reset("N481", "N502", use_heuristic: heuristic_flag, use_jps: jps_flag)
       jps.search
     end
