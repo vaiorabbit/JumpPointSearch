@@ -307,7 +307,7 @@ class JPSAlgorithm
   @@heuristic_Manhattan   = Proc.new { |node, goal| (node.x - goal.x).to_f.abs + (node.y - goal.y).to_f.abs } # Manhattan Distance (for non-diagonal map only)
   @@heuristic_Pythagorean = Proc.new { |node, goal| Math.sqrt((node.x - goal.x)**2 + (node.y - goal.y)**2) }  # Pythagorean theorem
 
-  def reset(start_id, goal_id, use_heuristic: true, use_astar: false)
+  def reset(start_id, goal_id, use_heuristic: true, use_jps: true)
     @route.reset
     @route.start_id = start_id
     @route.goal_id  = goal_id
@@ -316,7 +316,7 @@ class JPSAlgorithm
     @use_heuristic = use_heuristic
     @heuristic     = use_heuristic ? @@heuristic_MaxDiff : @@heuristic_Zero
 
-    @use_astar = use_astar
+    @use_jps = use_jps
 
     @visited.clear
     @search_iter = 0
@@ -425,7 +425,7 @@ class JPSAlgorithm
 
 
   def search
-    @use_astar ? search_astar : search_jps
+    @use_jps ? search_jps : search_astar
   end
 
   def found;    return @route.found; end
@@ -481,7 +481,7 @@ class JPSAlgorithm
   private :render_cell
 
   def render
-    puts "#iteration = #{@search_iter} [@use_heuristic == #{@use_heuristic}, @use_astar == #{@use_astar}]"
+    puts "#iteration = #{@search_iter} [@use_heuristic == #{@use_heuristic}, @use_jps == #{@use_jps}]"
     path = self.get_path
     if path != nil
       @render_map_height.times do |h|
@@ -505,17 +505,17 @@ if __FILE__ == $0
   jps.setup_route
 
   heuristic_flag = true
-  astar_flag     = false
+  jps_flag       = true
 
   if ARGV.include?("-dijkstra")
     heuristic_flag = false
-    astar_flag     = true
+    jps_flag       = false
   elsif ARGV.include?("-astar")
     heuristic_flag = true
-    astar_flag     = true
+    jps_flag       = false
   end
 
-  jps.reset("N481", "N502", use_heuristic: heuristic_flag, use_astar: astar_flag)
+  jps.reset("N481", "N502", use_heuristic: heuristic_flag, use_jps: jps_flag)
   jps.search
 
   if jps.found
