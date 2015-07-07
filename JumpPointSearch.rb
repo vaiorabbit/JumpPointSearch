@@ -515,7 +515,8 @@ if __FILE__ == $0
     jps_flag       = false
   end
 
-  jps.reset("N481", "N502", use_heuristic: heuristic_flag, use_jps: jps_flag)
+# jps.reset("N481", "N502", use_heuristic: heuristic_flag, use_jps: jps_flag)
+  jps.reset("N416", "N575", use_heuristic: heuristic_flag, use_jps: jps_flag)
   jps.search
 
   if jps.found
