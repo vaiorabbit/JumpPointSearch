@@ -125,8 +125,8 @@ class JPSAlgorithm
       forced = [] # Array of [node, node_cost] information
       case direction(dx, dy)
       when NORTHWEST
-        forced << neighbor_at(*NORTHWEST) if obstacle_at(*WEST)  # if West  is obstacle then mark Northwest as forced
-        forced << neighbor_at(*SOUTHEAST) if obstacle_at(*SOUTH) # if South is obstacle then mark SouthEast as forced
+        forced << neighbor_at(*NORTHEAST) if obstacle_at(*WEST)  # if West  is obstacle then mark NorthEast as forced
+        forced << neighbor_at(*SOUTHWEST) if obstacle_at(*SOUTH) # if South is obstacle then mark SouthWest as forced
       when WEST
         forced << neighbor_at(*NORTHWEST) if obstacle_at(*NORTH) # if North is obstacle then mark NorthWest as forced
         forced << neighbor_at(*SOUTHWEST) if obstacle_at(*SOUTH) # if South is obstacle then mark SouthWest as forced
@@ -516,7 +516,7 @@ if __FILE__ == $0
   end
 
 # jps.reset("N481", "N502", use_heuristic: heuristic_flag, use_jps: jps_flag)
-  jps.reset("N416", "N575", use_heuristic: heuristic_flag, use_jps: jps_flag)
+  jps.reset("N24", "N575", use_heuristic: heuristic_flag, use_jps: jps_flag)
   jps.search
 
   if jps.found
