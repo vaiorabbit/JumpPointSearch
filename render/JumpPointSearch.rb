@@ -319,7 +319,7 @@ class JPSAlgorithm
     @route.record(@nodes[start_id], nil, 0.0, 0.0)
 
     @use_heuristic = use_heuristic
-    @heuristic     = use_heuristic ? @@heuristic_MaxDiff : @@heuristic_Zero
+    @heuristic     = use_heuristic ? @@heuristic_Manhattan: @@heuristic_Zero
 
     @use_jps = use_jps
 
