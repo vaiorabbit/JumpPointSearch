@@ -33,6 +33,9 @@ A JPS implementation used to make these videos:
 * Online Graph Pruning for Pathfinding on Grid Maps [D. Harabor and A. Grastien. (2011)]
   * http://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-aaai11.pdf
 
+* https://en.wikipedia.org/wiki/Jump_point_search
+
+
 ## License ##
 
 The zlib/libpng License ( http://opensource.org/licenses/Zlib ).
