@@ -21,8 +21,17 @@ A JPS implementation used to make these videos:
 
 <img src="https://raw.githubusercontent.com/vaiorabbit/JumpPointSearch/master/doc/JPS01_AStar.png" width="400">
 
+    $ ruby JumpPointSearch.rb road_map.txt -jps
 
-JPS01_AStar.png
+↓
+
+<img src="https://raw.githubusercontent.com/vaiorabbit/JumpPointSearch/master/doc/JPS02_JPS.png" width="400">
+
+
+## Reference ##
+
+* Online Graph Pruning for Pathfinding on Grid Maps [D. Harabor and A. Grastien. (2011)]
+  * http://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-aaai11.pdf
 
 ## License ##
 
